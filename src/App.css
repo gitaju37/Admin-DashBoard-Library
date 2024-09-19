@@ -1,0 +1,38 @@
+
+.book-container, .auther-container{
+  width:40vw;
+}
+form{
+  margin-top: 20px;
+}
+.table-container {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.t-head th {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  
+}
+
+.t-body td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.t-body tr:nth-child(even) {
+  background-color: #a0def1;
+}
+
+.t-body tr:nth-child(odd) {
+  background-color: #f8fa82;
+}
+
+
+.t-body tr:hover {
+  background-color: #ddd;
+}
