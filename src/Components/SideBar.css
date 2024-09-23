@@ -33,3 +33,6 @@ ul li :hover {
     color: black;
     }
 }
+ul li i{
+margin-right: 10px;
+}

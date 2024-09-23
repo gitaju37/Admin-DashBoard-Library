@@ -1,6 +1,7 @@
 import { useFormik } from "formik"
 import { useNavigate } from "react-router-dom"
 import * as yup from "yup"
+import './Login.css'
 
 
 const Login = () => {
@@ -8,7 +9,8 @@ const Login = () => {
     const formik = useFormik( {
         initialValues: {
             email: "",
-            password: ""
+            password: "",
+            username:""
         },
         onSubmit: ( values, { resetForm } ) => {
             try {
@@ -23,31 +25,39 @@ const Login = () => {
                 
         },
         validationSchema: yup.object( {
-            email: yup.string().required( "Email is Required" ).email( "Invalid Email" ),
-            password: yup.string().required( "Password is required" )
+            email: yup.string().required( "Email is Required" ).email( "Invalid Email Id" ),
+            password: yup.string().required( "Password is Required" ),
+            username: yup.string().required("Username is Required" )
         } )
     } )
     return (
-        <div className="login-container" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: "rgb(144, 206, 241)", width: "100%", height: "100vh" }} >
-            <h2 className="m-3">Login Here</h2>
-            <div className="w-50 m-5 p-5" style={{ justifyContent: "center", backgroundColor: "rgb(5, 105, 162)", borderRadius: "20px" }}>
-                <form onSubmit={formik.handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email Address"
-                            {...formik.getFieldProps( "email" )} />
-                        {formik.touched && formik.errors.email ? ( <div className="text-danger">{formik.errors.email}</div> ) : null}
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter Password"
-                            {...formik.getFieldProps( "password" )} />
-                        {formik.touched && formik.errors.password ? ( <div className="text-danger">{formik.errors.password}</div> ) : null}
-                    </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+        <section>
+            <div className="login-container">
+                <form className="login" onSubmit={formik.handleSubmit} >
+                   
+                        <h2>LOGIN HERE</h2>
+                        <div className="inputBox">
+                        <input type="text" placeholder="User Name" {...formik.getFieldProps( "username" )} />
+                        {formik.touched && formik.errors.username ? ( <div className="text-danger">{formik.errors.username}</div> ) : null}
+                        </div>
+                        <div className="inputBox">
+                            <input type="email" placeholder="Mail id"  {...formik.getFieldProps( "email" )} />
+                            {formik.touched && formik.errors.email ? ( <div className="text-danger">{formik.errors.email}</div> ) : null}
+                        </div>
+                        <div className="inputBox">
+                            <input type="password" placeholder="Password"  {...formik.getFieldProps( "password" )} />
+                            {formik.touched && formik.errors.password ? ( <div className="text-danger">{formik.errors.password}</div> ) : null}
+                        </div>
+                        <div className="inputBox">
+                        <input type="submit" value="Login" id="btn" />
+                        </div>
+                        <div className="group">
+                            <a href="#">Forget Password</a>
+                            <a href="#">Signup</a>
+                        </div>
                 </form>
             </div>
-        </div>
+        </section>
     )
 }
 
